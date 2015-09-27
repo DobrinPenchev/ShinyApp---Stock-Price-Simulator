@@ -84,7 +84,7 @@ server <- function(input, output) {
         y <- reactive({c(e()[1],sd()[2:n.obs()]*rnormE(n.obs()-1))})
         z <- reactive(c(sd()[1],sqrt(A*y()[1:(n.obs()-1)]^2 + B*sd()[1:(n.obs()-1)]^2)))
         
-        x <- reactive({m() + rnormF(n.obs(),0,sd())})
+        x <- reactive({m() + rnormF(n.obs(),0,z())})
 
         prices <- reactive({c(startPrice(),cumprod(exp(x()))*startPrice())})
          
